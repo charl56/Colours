@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colour_black">#FF000000</color> <!--Black-->
+    <color name="colour_blue">#FF000080</color> <!--Navy-->
+    <color name="colour_red">#FFC80815</color> <!--Venetian Red-->
+    <color name="colour_purple">#FF6F2DA8</color> <!--Grape-->
+    <color name="colour_green">#FF004225</color> <!--British Racing Green-->
+    <color name="colour_cyan">#FF00B7EB</color> <!--Cyan (Process)-->
+    <color name="colour_yellow">#FFFFEF00</color> <!--Canary Yellow-->
+    <color name="colour_white">#FFFFFFFF</color> <!--White-->
+    <color name="colour_brown">#FF3D0C02</color> <!--Black Bean-->
+    <color name="colour_orange">#FFFF4F00</color> <!--International Orange-->
+    <color name="colour_pink">#FFFF69B4</color> <!--Hot Pink-->
+    <color name="colour_grey">#FF777777</color> <!--Grey-->
+</resources>
