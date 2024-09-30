@@ -21,8 +21,8 @@
     <string name="local_high_score">Best score this device : %d points</string>
     <string name="show_global_scores_button">Show Global Scores</string>
     <string name="time_left_label">You have %02d.%02d seconds left</string>
-    <string name="game_over">Game Over!</string>
-    <string name="play_game_ls_button">Play!</string>
+    <string name="game_over">Looser !</string>
+    <string name="play_game_ls_button">Play !</string>
     <string name="show_global_scores_ls_button">Global Scores</string>
     <string name="actual_message">The actual colour was %s,</string>
     <string name="guessed_message">you guessed %s.</string>

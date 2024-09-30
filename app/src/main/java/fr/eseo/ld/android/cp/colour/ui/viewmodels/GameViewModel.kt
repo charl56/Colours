@@ -20,7 +20,6 @@ import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 
-//viewModel: NoteTakerViewModel = viewModel()
 class GameViewModel(private val dataStore: WhatColourDataStore): ViewModel() {
 
 
@@ -55,7 +54,6 @@ class GameViewModel(private val dataStore: WhatColourDataStore): ViewModel() {
     private fun updateGameState(score : Int){
         val correctColour = selectRandomColour()
         val incorrectColour = selectRandomColour(correctColour)
-        println(uiState)
         _uiState.update{
         currentState ->
             currentState.copy(
@@ -179,8 +177,5 @@ class GameViewModel(private val dataStore: WhatColourDataStore): ViewModel() {
             throw IllegalArgumentException("Wrong VM class")
         }
     }
-
-
-
 
 }

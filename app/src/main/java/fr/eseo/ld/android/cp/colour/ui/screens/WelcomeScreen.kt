@@ -1,8 +1,13 @@
 package fr.eseo.ld.android.cp.colour.ui.screens
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -10,10 +15,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.eseo.ld.android.cp.colour.R
@@ -78,14 +83,75 @@ fun WelcomeScreen(
         viewModel : GameViewModel,
         playGameClick : () ->Unit,
     ){
+
+    val orientation = LocalConfiguration.current.orientation
+    val gameUiState by viewModel.uiState.collectAsState()
+
+    when (orientation) {
+        Configuration.ORIENTATION_LANDSCAPE -> {
+            LandscapeWelcomeScreen(gameUiState = gameUiState, playGameClick = playGameClick)
+        }
+        else -> {
+            PortraitWelcomeScreen(gameUiState = gameUiState, playGameClick = playGameClick)
+        }
+    }
+}
+
+
+@Composable
+fun PortraitWelcomeScreen(
+    gameUiState: GameUiState,
+    playGameClick: () -> Unit,
+) {
     Column (
         verticalArrangement = Arrangement.SpaceBetween
     ){
-        val gameUiState by viewModel.uiState.collectAsState()
-
         WelcomeTitle()
         WelcomeButton(text = stringResource(R.string.play_game_button), onClick = {playGameClick()})
         WelcomeScores(gameUiState)
         WelcomeButton(text = stringResource(R.string.show_global_scores_button), onClick = {})
+    }
+}
+
+@Composable
+fun LandscapeWelcomeScreen(
+    gameUiState: GameUiState,
+    playGameClick: () -> Unit,
+    modifier : Modifier = Modifier
+){
+    Column(
+        modifier = modifier
+            .fillMaxSize(),
+    ){
+        WelcomeTitle()
+        Spacer(modifier = Modifier.height(8.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(end = 8.dp)
+            ) {
+                WelcomeScores(gameUiState)
+            }
+            Column(
+                modifier = Modifier
+                    .weight(0.4f)
+                    .padding(start = 8.dp)
+            ) {
+                WelcomeButton(
+                    text = stringResource(id = R.string.play_game_button),
+                    onClick =
+                    playGameClick
+                )
+                WelcomeButton(
+                    text = stringResource(id = R.string.show_global_scores_button),
+                    onClick = {},
+                    enabled = false
+                )
+            }
+        }
     }
 }

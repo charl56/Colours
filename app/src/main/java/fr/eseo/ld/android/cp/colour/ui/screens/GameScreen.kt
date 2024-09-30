@@ -127,7 +127,7 @@ fun BoxWithText(textId : Int, colourId: Int, modifier: Modifier = Modifier) {
 
 @Composable
 fun GameCard(
-    currentCorrectColour: ColourData,
+     currentCorrectColour: ColourData,
      currentIncorrectColour: ColourData,
      option1: ColourData,
      option2: ColourData,

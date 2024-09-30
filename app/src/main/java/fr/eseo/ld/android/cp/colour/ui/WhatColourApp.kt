@@ -30,6 +30,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import fr.eseo.ld.android.cp.colour.model.WhatColourDataStore
+import fr.eseo.ld.android.cp.colour.service.ChangeLanguage
 import fr.eseo.ld.android.cp.colour.ui.screens.GameScreen
 import fr.eseo.ld.android.cp.colour.ui.screens.WelcomeScreen
 import fr.eseo.ld.android.cp.colour.ui.viewmodels.GameViewModel
@@ -71,8 +72,6 @@ fun WhatColourApp(
     val viewModel: GameViewModel = viewModel(factory = GameViewModel.GameViewModelFactory(dataStore))
 
 
-//    val viewModel = remember { GameViewModel() }
-
 
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentScreen = WhatColourScreens.valueOf(
@@ -88,35 +87,34 @@ fun WhatColourApp(
             )
         }
     ) { innerPadding ->
-            NavHost(
-                navController = navController,
-                startDestination = WhatColourScreens.WELCOME.name,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .verticalScroll(rememberScrollState())
-                    .padding(innerPadding)
+        NavHost(
+            navController = navController,
+            startDestination = WhatColourScreens.WELCOME.name,
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .padding(innerPadding)
+        ) {
+            composable(
+                route = WhatColourScreens.WELCOME.name
             ) {
-                composable(
-                    route = WhatColourScreens.WELCOME.name
-                ) {
-                    WelcomeScreen(
-                        viewModel = viewModel,
-                        playGameClick = {
-                            viewModel.startGame()
-                            navController.navigate(WhatColourScreens.GAME.name)
-                        }
-                    )
-                }
-                composable(
-                    route = WhatColourScreens.GAME.name
-                ) {
-                    GameScreen(
-                        viewModel = viewModel,
-                        navController = navController
-                    )
-                }
+                WelcomeScreen(
+                    viewModel = viewModel,
+                    playGameClick = {
+                        viewModel.startGame()
+                        navController.navigate(WhatColourScreens.GAME.name)
+                    }
+                )
             }
-
+            composable(
+                route = WhatColourScreens.GAME.name
+            ) {
+                GameScreen(
+                    viewModel = viewModel,
+                    navController = navController
+                )
+            }
+        }
     }
 
 }
