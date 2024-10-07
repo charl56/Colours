@@ -14,15 +14,12 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Icon
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import fr.eseo.ld.android.cp.colour.R
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -30,7 +27,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import fr.eseo.ld.android.cp.colour.model.WhatColourDataStore
-import fr.eseo.ld.android.cp.colour.service.ChangeLanguage
 import fr.eseo.ld.android.cp.colour.ui.screens.GameScreen
 import fr.eseo.ld.android.cp.colour.ui.screens.WelcomeScreen
 import fr.eseo.ld.android.cp.colour.ui.viewmodels.GameViewModel

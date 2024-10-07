@@ -22,7 +22,6 @@ import kotlin.random.Random
 
 class GameViewModel(private val dataStore: WhatColourDataStore): ViewModel() {
 
-
     private val _uiState = MutableStateFlow(GameUiState())
     val uiState = _uiState.asStateFlow()
     var userGuess by mutableStateOf(-1)
